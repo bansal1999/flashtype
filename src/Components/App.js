@@ -5,15 +5,58 @@ import Footer from "./Footer";
 import Landing from "./Landing";
 import Nav from "./Nav";
 
+const TotalTime = 60;
+//const serviceUrl = "http://metaphorpsum.com/paragraphs/1/9";
+
 class App extends React.Component {
+  state = {
+    selectedParagraph: "Hello World",
+    timerStarted: false,
+    timeRemaining: TotalTime,
+    words: 0,
+    characters: 0,
+    wpm: 0,
+    testInfo: [],
+  };
+
+  componentDidMount() {
+    // fetch(serviceUrl)
+    //   .then((response) => response.text())
+    //   .then((data) => {
+    //     console.log(data);
+    //     this.setState({ selectedParagraph: data });
+    //   });
+
+    const selectedParagraphArray = this.state.selectedParagraph.split("");
+    console.log("splitted array - ", selectedParagraphArray);
+    const testInfo = selectedParagraphArray.map((selectedLetter) => {
+      return {
+        testLetter: selectedLetter,
+        status: "notAttempted",
+      };
+    });
+
+    this.setState({ testInfo });
+  }
+
   render() {
+    console.log("Test Info: ", this.state.testInfo);
     return (
       <div className="app">
         <Nav />
         <Landing />
-        <ChallengeSection/>
-        <Footer />
-       
+
+        <ChallengeSection
+          selectedParagraph={this.state.selectedParagraph}
+          words={this.state.words}
+          characters={this.state.characters}
+          wpm={this.state.wpm}
+          timeRemaining={this.state.timeRemaining}
+          timerStarted={this.state.timerStarted}
+          testInfo={this.state.testInfo}
+        />
+
+        <Footer/>
       </div>
     );
   }
