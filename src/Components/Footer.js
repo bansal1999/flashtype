@@ -7,10 +7,10 @@ const Footer = () => {
       <a
         target="_blank"
         className="footer-link"
-        href="https://theleanprogrammer.com/aam"
+        href="https://github.com/bansal1999/flashtype"
         rel="noreferrer"
       >
-        Watch the full react course now!
+        Check out the source code here
       </a>
     </div>
   );
