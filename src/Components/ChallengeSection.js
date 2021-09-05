@@ -4,29 +4,31 @@ import TestContainer from "./TestContainer";
 
 const ChallengeSection = ({
   selectedParagraph,
+  testInfo,
+  onInputChange,
   words,
   characters,
   wpm,
   timeRemaining,
   timerStarted,
-  testInfo,
-  onInputChange
+  startAgain,
 }) => {
   return (
     <div className="challenge-section-container">
-      <h1 className="challenge-section-header">Take a speed test now</h1>
-
+      <h1 data-aos="fade-down" className="challenge-section-header">
+        Take a Speed Test Now!
+      </h1>
       <TestContainer
-        timeRemaining={timeRemaining}
-        timerStarted={timerStarted}
+        testInfo={testInfo}
         selectedParagraph={selectedParagraph}
+        onInputChange={onInputChange}
         words={words}
         characters={characters}
         wpm={wpm}
-        testInfo={testInfo}
-        onInputChange ={onInputChange}
+        timeRemaining={timeRemaining}
+        timerStarted={timerStarted}
+        startAgain={startAgain}
       />
-
     </div>
   );
 };
